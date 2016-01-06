@@ -1,35 +1,44 @@
 #include <iostream>
 #include <fstream>
+#include <conio.h>
 
 using namespace std;
 
 const int SIZE=6;
-const int NUMSIZE=5;
+const int NUMSIZE=7;
 	
-void openCloseFile(string [], int [][NUMSIZE]);
-void copyData(string [], int [][NUMSIZE]);
-void displayArrays();
+void copyData(string (&data)[SIZE][NUMSIZE]);
+void displayArrays(string [][NUMSIZE]);
 
-int main() {
+int main() 
+{
+	string data[SIZE][NUMSIZE];
 	
-
-	string names[SIZE];
-	int numbers[SIZE][NUMSIZE];
+	copyData(data);
+	displayArrays(data);
 	
-	openCloseFile(names[SIZE], numbers[SIZE][NUMSIZE]);
-	openCloseFile(names[SIZE], numbers[][]);
-	
+	getch();
 	return 0;
 }
 
-void openCloseFile(string names[], int numbers[][])
+void copyData(string (&data)[SIZE][NUMSIZE])
 {
 	ifstream inputFile;
 	inputFile.open("dayOne.txt");
 	
 	if(inputFile)
 	{
-		copyData(names[], numbers[][]);
+		while(!inputFile.eof())
+		{
+			for(int count=0; count<SIZE; count++)
+			{
+				for(int numcount=0; numcount<NUMSIZE; numcount++)
+				{
+					inputFile>> data[count][numcount];
+				}
+				
+			}
+		}	
 		inputFile.close(); 
 	}
 	else
@@ -38,10 +47,16 @@ void openCloseFile(string names[], int numbers[][])
 	}
 }
 
-void copyData(string names[], int numbers[][])
+void displayArrays(string data[][NUMSIZE])
 {
-	while(!inputFile.eof())
-	{
-		inputFile>> 
-	}
+	for(int count=0; count<SIZE; count++)
+		{
+			for(int numcount=0; numcount<NUMSIZE; numcount++)
+			{
+				cout<<data[count][numcount]<<endl;
+			}
+		
+		}
 }
+
+
