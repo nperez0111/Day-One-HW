@@ -27,15 +27,17 @@ int main()
 void copyData(string (&names)[SIZE], int (&numbers)[SIZE][NUMSIZE])
 {
 	int count= 0;
+	int numcount=0;
 	ifstream inputFile;
 	inputFile.open("dayOne.txt");
 	
 	if(inputFile)
 	{
-		while(count<SIZE && !inputFile.eof())
+		while(count<SIZE && numcount<NUMSIZE && !inputFile.eof())
 		{
-			inputFile>> names[count];
+			inputFile>> numbers[count][numcount];
 			count++;
+			numcount++;
 		}	
 		inputFile.close(); 
 	}
@@ -47,9 +49,14 @@ void copyData(string (&names)[SIZE], int (&numbers)[SIZE][NUMSIZE])
 
 void displayArrays(string names[], int numbers[][NUMSIZE])
 {
-	for(int count=0; count<SIZE; count++)
+	int count=0;
+	int numcount=0;
+	
+	while(count<SIZE && numcount<NUMSIZE)
 	{
-		cout<< names[count]<< endl;
+		cout<< numbers[count][numcount]<< endl;
+		count++;
+		numcount++;
 	}
 }
 
