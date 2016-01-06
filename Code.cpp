@@ -5,39 +5,39 @@
 using namespace std;
 
 const int SIZE=6;
-const int NUMSIZE=5;
+const int NUMSIZE=7;
 	
-void copyData(string (&names)[SIZE], int (&numbers)[SIZE][NUMSIZE]);
-void displayArrays(string [], int [][NUMSIZE]);
+void copyData(string (&data)[SIZE][NUMSIZE]);
+void displayArrays(string [][NUMSIZE]);
 
 int main() 
 {
+	string data[SIZE][NUMSIZE];
 	
-
-	string names[SIZE];
-	int numbers[SIZE][NUMSIZE];
-	
-	copyData(names, numbers);
-	displayArrays(names, numbers);
+	copyData(data);
+	displayArrays(data);
 	
 	getch();
 	return 0;
 }
 
-void copyData(string (&names)[SIZE], int (&numbers)[SIZE][NUMSIZE])
+void copyData(string (&data)[SIZE][NUMSIZE])
 {
-	int count= 0;
-	int numcount=0;
 	ifstream inputFile;
 	inputFile.open("dayOne.txt");
 	
 	if(inputFile)
 	{
-		while(count<SIZE && numcount<NUMSIZE && !inputFile.eof())
+		while(!inputFile.eof())
 		{
-			inputFile>> numbers[count][numcount];
-			count++;
-			numcount++;
+			for(int count=0; count<SIZE; count++)
+			{
+				for(int numcount=0; numcount<NUMSIZE; numcount++)
+				{
+					inputFile>> data[count][numcount];
+				}
+				
+			}
 		}	
 		inputFile.close(); 
 	}
@@ -47,18 +47,16 @@ void copyData(string (&names)[SIZE], int (&numbers)[SIZE][NUMSIZE])
 	}
 }
 
-void displayArrays(string names[], int numbers[][NUMSIZE])
+void displayArrays(string data[][NUMSIZE])
 {
-	int count=0;
-	int numcount=0;
-	
-	while(count<SIZE && numcount<NUMSIZE)
-	{
-		cout<< numbers[count][numcount]<< endl;
-		count++;
-		numcount++;
-	}
+	for(int count=0; count<SIZE; count++)
+		{
+			for(int numcount=0; numcount<NUMSIZE; numcount++)
+			{
+				cout<<data[count][numcount]<<endl;
+			}
+		
+		}
 }
-
 
 
