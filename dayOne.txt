@@ -1,0 +1,6 @@
+Bob Jones 6 6 33 43 94
+Jennifer Aniston 2 8 26 5 34
+Bob Marley 2 1 33 1 90
+Tom Jones 2 10 41 43 38
+John Denver 5 5 35 29 92
+Janice Joplin 5 7 31 29 46
